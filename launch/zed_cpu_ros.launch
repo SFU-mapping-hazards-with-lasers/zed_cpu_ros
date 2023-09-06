@@ -1,6 +1,6 @@
 <launch>
 <arg name="config_file_location" default="$(find zed_cpu_ros)/config/SN1267.conf"/>
-<arg name="camera_namespace" default="camera"/>
+<arg name="camera_namespace" default="zed2"/>
 <!-- to find your device name, use ls /dev/ and look for the name begin with video -->
 <arg name="device_name" value="/dev/video0"/>
 <arg name="resolution" default="1"/>
@@ -21,7 +21,8 @@
 	<param name="encoding" value="$(arg encoding)"/>
 </node>
 
-<!-- <node pkg="tf" type="static_transform_publisher" name="static_tf_1" args="0.25 0 0.4 0 0 0 1 base_link left_frame 30"/> -->
-<!-- <node pkg="tf" type="static_transform_publisher" name="static_tf_2" args="0 0.120 0 0 0 0 1 left_frame right_frame 30"/> -->
+<!-- tf static transform to attach the ZED images to the ZED2 URDF -->
+<node pkg="tf" type="static_transform_publisher" name="static_tf_1" args="0 0 0 0 0 0 1 zed2_left_camera_optical_frame left_frame 30"/>
+<node pkg="tf" type="static_transform_publisher" name="static_tf_2" args="0 0 0 0 0 0 1 zed2_right_camera_optical_frame right_frame 30"/>
 
 </launch>

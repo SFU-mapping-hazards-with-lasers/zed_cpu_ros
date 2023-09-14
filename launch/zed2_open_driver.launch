@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find zed_cpu_ros)/launch/zed_cpu_ros.launch"/>
+    <include file="$(find zed_cpu_ros)/launch/zed2.launch"/>
+</launch>
